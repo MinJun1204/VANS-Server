@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql')
 const conn = mysql.createConnection({
-  host      : 'localhost',
+  host      : '39.7.19.192',
   user      : 'root',
   password  : '111111',
   database  : 'vans'
 })
-conn.connect()
+// conn.connect()
 
 const admin = require('firebase-admin')
 const serviceAccount = require('../vans-d2964-firebase-adminsdk-mim3s-7de5741ab6.json')
@@ -25,16 +25,16 @@ router.post('/user', (req, res, next) => {
   var token = req.query.token
   console.log(token)
 
-  conn.query(`INSERT INTO user VALUES (null, '${token}')`, (err, fields) => {
-    if (err) throw err
+  // conn.query(`INSERT INTO user VALUES (null, '${token}')`, (err, fields) => {
+    // if (err) throw err
     res.send('보호자 앱 등록이 완료되었습니다.')
-  })
+  // })
 })
 
 router.post('/send', (req, res, next) => {
   console.log(req.body)
-  conn.query('SELECT token FROM user', (err, rows, fields) => {
-    if (err) throw err
+  // conn.query('SELECT token FROM user', (err, rows, fields) => {
+    // if (err) throw err
 
     var fcm_target_token = rows[rows.length - 1].token
     var fcm_message = {
@@ -57,7 +57,7 @@ router.post('/send', (req, res, next) => {
       .catch((error) => {
         res.send('실패 : ' + error)
       })
-  })
+  // })
 })
 
 router.post('/', (req, res, next) => {
