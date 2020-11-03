@@ -36,7 +36,7 @@ router.post('/send', (req, res, next) => {
   // conn.query('SELECT token FROM user', (err, rows, fields) => {
     // if (err) throw err
 
-    var fcm_target_token = rows[rows.length - 1].token
+    var fcm_target_token = 'etO6cLf9TfyvGSPyflRC7f:APA91bF_bj40gSBqfF6XUOCLn6m44De-hNHbu5bwdWScvDK43L5EsRgS7GX1HRWywqGUmhvqYC3hAaH71J_YDbR-7cp7loq2otizOyv94mEZZ2Fu6krQOPN_Y_QxSfrbSrq1eOEqSzNi'
     var fcm_message = {
       notification: {
         title: '위급 상황 발생 : ' + req.body.address,
